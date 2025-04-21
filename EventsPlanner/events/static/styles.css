@@ -246,11 +246,11 @@ body {
     /* flex-grow: 1; */ /* Alternative: Use this to push auth links right if margin-left: auto is not used on .navbar-auth */
 }
 
-/* Individual Main Navigation Link Item (LI) */
+/* Individual Main Navigation Link Item (LI) 
 .nav-item {
-    /* No specific styles needed if using gap on ul */
+    /* No specific styles needed if using gap on ul 
 }
-
+*/
 /* Individual Main Navigation Link (A) */
 .nav-link {
     color: #ecf0f1;

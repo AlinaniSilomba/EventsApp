@@ -7,6 +7,13 @@
 <div class="login-container">
     <form id="login-form" action="{%url 'login'%}" method='post'>
         {% csrf_token %}
+        <!--TODO  deadline: 25 April 2025
+        1. fix formatting issue where the email address field is not correctly formatted 
+        #issue is with crispy forms not being applied on a custom field. 
+
+        2. The flex box is appearing blown out of size, resize to look okay
+        #inspect css
+        -->
         <div class="input-group" >
             {{form|crispy}}
         </div>

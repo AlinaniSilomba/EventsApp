@@ -18,9 +18,20 @@
             </li>
         </ul>
 
+        <!-- Todo!
+        Fix this logic here to toggle off and on buttons for login and logout  
+        the issue is that both buttons are appearing in the navbar 
+        -->
         <div class="navbar-auth">
-            <a href="{%url 'login'%}" class="auth-link login-link">Login</a>
-            <a href="{%url 'logout'%}" class="auth-link logout-link">Logout</a>
+            <ul>
+                {% if user.is_authenticated %}
+                <span>Logged in as {{user.username}}</span>
+                    <a href="{%url 'logout'%}" class="auth-link logout-link">Logout</a>
+                    {% else %}
+                    <a href="{%url 'login'%}" class="auth-link login-link">Login</a>
+                {% endif %}
+            </ul>
+            
         </div>
     </div>
 </nav>
