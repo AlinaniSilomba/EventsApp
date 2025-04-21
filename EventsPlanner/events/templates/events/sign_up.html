@@ -8,7 +8,7 @@
     <form action="{%url 'sign_up'%}" method='post'>
         {% csrf_token %}
         {{form|crispy}}
-        <p> have an account? Login <a href=""> Here</a></p>
+        <p> have an account? Login <a href="{%url 'login'%}"> Here</a></p>
         <div>
             <button class="" type="submit">Register</button>
         </div>
