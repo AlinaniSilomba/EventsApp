@@ -1,0 +1,17 @@
+{% extends "events/layout.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Sign Up{% endblock title %}
+
+
+{% block body %}
+<div>
+    <form action="{%url 'sign_up'%}" method='post'>
+        {% csrf_token %}
+        {{form|crispy}}
+        <p> have an account? Login <a href=""> Here</a></p>
+        <div>
+            <button class="" type="submit">Register</button>
+        </div>
+    </form>
+</div>
+{% endblock body %}
