@@ -22,5 +22,9 @@ def sign_up(request):
     return render(request,'events/sign_up.html',{
         'form':form
     })
+       
+
+def log_out(request):
+    return render(request, 'events/logout.html')
     
 
