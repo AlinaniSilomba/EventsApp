@@ -16,11 +16,6 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </li>
         </ul>
-
-        <!-- Todo! 
-        Fix this logic here to toggle off and on buttons for login and logout  
-        the issue is that both buttons are appearing in the navbar 
-        -->
         <div class="nav-link:hover">
                 <form action= "{%url 'logout'%}" method="post">
                     {% csrf_token %}
