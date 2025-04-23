@@ -34,10 +34,3 @@ Best standards
     <p>Content Coming Soon.</p>
 </div>
 {% endblock body %}
-
-<div class="nav-link:hover">
-    <form action= "{%url 'logout'%}" method="post">
-        {% csrf_token %}
-         <button class="logout-btn" type="submit">Logout</button>
-    </form>   
-</div>
