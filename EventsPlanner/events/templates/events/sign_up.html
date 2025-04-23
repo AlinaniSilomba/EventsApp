@@ -4,19 +4,25 @@
 
 
 {% block body %}
-<div class="login-container">
+   <!--TODO  deadline: 25 April 2025
+        1. fix formatting issue where the email address field is not correctly formatted 
+        #issue is with crispy forms not being applied on a custom field 
+
+        2. The flex box is appearing blown out of size, resize to look okay
+        #inspect css
+        -->
+<div class="">
     <form id="login-form" action="{%url 'sign_up'%}" method='post'>
         {% csrf_token %}
-        <div class="input-group">
+        <div class="">
             {{form|crispy}}
         </div>
 
-      <div class="signup-link">
+      <div class="">
         <p> have an account? Login <a href="{%url 'login'%}"> Here</a></p>
       </div>
-        
         <div >
-            <button class="login-btn" type="submit">Register</button>
+            <button class="" type="submit">Register</button>
         </div>
     </form>
 </div>

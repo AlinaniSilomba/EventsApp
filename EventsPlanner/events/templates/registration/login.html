@@ -4,25 +4,21 @@
 
 
 {% block body %}
-<div class="login-container">
-    <form id="login-form" action="{%url 'login'%}" method='post'>
-        
+<div class="">
+    <form id="login-form" action="{%url 'login'%}" method='post'>  
         {% csrf_token %}
-        <!--TODO  deadline: 25 April 2025
-        1. fix formatting issue where the email address field is not correctly formatted 
-        #issue is with crispy forms not being applied on a custom field. 
-
-        2. The flex box is appearing blown out of size, resize to look okay
-        #inspect css
-        -->
-        <div class="input-group" >
+        <div class="" >
             {{form|crispy}}
         </div>
-       <div class="signup-link">
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+       <div class="">
         <p>Don't have an account? Sign up <a href="{%url 'sign_up'%}"> Here</a></p>
        </div>
         <div>
-            <button class="login-btn" type="submit">Login</button>
+            <button class="" type="submit">Login</button>
         </div>
     </form>
 </div>
