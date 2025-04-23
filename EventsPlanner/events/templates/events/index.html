@@ -17,8 +17,12 @@
             <a class="nav-link" href="#">About us</a>
           </li>
         </ul>
+
         <form class="d-flex" action= "{%url 'logout'%}" method="post">
-            {% csrf_token %}
+          <!--TODO
+          Fix the styling were the username appears too close to the log out button      
+          -->
+            {% csrf_token %} 
             {% if user.is_authenticated %}
           <p class="lead">Hello {{user.username}}<p/>
             {% endif %}

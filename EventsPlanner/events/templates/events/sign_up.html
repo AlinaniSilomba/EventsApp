@@ -7,7 +7,8 @@
 <div class="row py-5">
   <div class="col-lg-4 mx-auto">
     <div class="logout-container">
-      <h1>Sign Up </h1>
+      <h1>Sign Up</h1>
+      <p class="leading"> Sign up to continue</p>
       <form id="login-form" action="{%url 'sign_up'%}" method='post'>
           {% csrf_token %}
           <div class=".form-control-sm">
@@ -18,7 +19,7 @@
           <p> have an account? Login <a href="{%url 'login'%}"> Here</a></p>
         </div>
           <div >
-              <button class="btn btn-success" type="submit">Register</button>
+              <button class="btn btn-primary" type="submit">Register</button>
           </div>
       </form>
   </div>

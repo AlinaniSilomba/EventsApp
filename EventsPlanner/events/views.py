@@ -3,14 +3,26 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from.forms import RegistrationForm
 from django.contrib.auth import login, logout, authenticate
+
+
 # Create your views here.
 def index(request):
+    '''
+    This is our home page function, We first check if the user is authenticated, if not they are redirected to the login page
+    otherwise if they are authenticated we allow them to stay on the homepage of index.html
+    
+    params:
+    return: template of the index.html page
+    '''
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     return render(request, 'events/index.html')
 
 
-def sign_up(request):
+def sign_up(request):#
+    '''
+    
+    '''
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -23,7 +35,10 @@ def sign_up(request):
         'form':form
     })
        
+'''
 
+
+'''
 def log_out(request):
     return render(request, 'events/logout.html')
     

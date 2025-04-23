@@ -21,5 +21,6 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('events/',include('events.urls')),
+    #Adds a bunch of pre-written routes for you for authentication
     path('events/accounts/', include('django.contrib.auth.urls'))
 ]
