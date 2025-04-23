@@ -4,26 +4,26 @@
 
 
 {% block body %}
-   <!--TODO  deadline: 25 April 2025
-        1. fix formatting issue where the email address field is not correctly formatted 
-        #issue is with crispy forms not being applied on a custom field 
-
-        2. The flex box is appearing blown out of size, resize to look okay
-        #inspect css
-        -->
-<div class="">
-    <form id="login-form" action="{%url 'sign_up'%}" method='post'>
-        {% csrf_token %}
+<div class="row py-5">
+  <div class="col-lg-4 mx-auto">
+    <div class="logout-container">
+      <h1>Sign Up </h1>
+      <form id="login-form" action="{%url 'sign_up'%}" method='post'>
+          {% csrf_token %}
+          <div class=".form-control-sm">
+              {{form|crispy}}
+          </div>
+  
         <div class="">
-            {{form|crispy}}
+          <p> have an account? Login <a href="{%url 'login'%}"> Here</a></p>
         </div>
-
-      <div class="">
-        <p> have an account? Login <a href="{%url 'login'%}"> Here</a></p>
-      </div>
-        <div >
-            <button class="" type="submit">Register</button>
-        </div>
-    </form>
+          <div >
+              <button class="btn btn-success" type="submit">Register</button>
+          </div>
+      </form>
+  </div>
 </div>
+</div>
+
+
 {% endblock body %}

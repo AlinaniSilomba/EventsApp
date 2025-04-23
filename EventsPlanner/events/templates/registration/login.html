@@ -1,25 +1,29 @@
 {% extends "events/layout.html" %}
 {% load crispy_forms_tags %}
-{% block title %}Login{% endblock title %}
+{% block title %}Log in to continue{% endblock title %}
 
 
 {% block body %}
-<div class="">
-    <form id="login-form" action="{%url 'login'%}" method='post'>  
-        {% csrf_token %}
-        <div class="" >
-            {{form|crispy}}
+<div class="row py-5">
+    <diV class="col-lg-4 mx-auto">
+        <div class="login-container">
+            <form id="login-form" action="{%url 'login'%}" method='post'>  
+                <h1 class="display-1">Sign In</h1>
+                <p>Please type your username and passowrd</p>
+                {% csrf_token %}
+                <div class="mb-3" >
+                    {{form|crispy}}
+                </div>
+               <div class="signup-link a ">
+                <p>Don't have an account? Sign up <a href="{%url 'sign_up'%}"> Here</a></p>
+               </div>
+                <div>
+                    <button class="btn btn-primary" type="submit">Login</button>
+                </div>
+            </form>
         </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
-       <div class="">
-        <p>Don't have an account? Sign up <a href="{%url 'sign_up'%}"> Here</a></p>
-       </div>
-        <div>
-            <button class="" type="submit">Login</button>
-        </div>
-    </form>
+    </div>
 </div>
+
+
 {% endblock body %}

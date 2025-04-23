@@ -9,12 +9,12 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #6a11cb, #ffffff); /* Example gradient background */
-    display: flex; /* Use flexbox for centering */
+    background: linear-gradient(to right, #87cff0, #ffffff); /* Example gradient background */
+    /* display: flex;  Use flexbox for centering */ 
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     min-height: 100vh; /* Ensure body takes full viewport height */
-    color: #333;
+    color: #73bfdd;
 }
 
 .login-container {
@@ -26,6 +26,21 @@ body {
     width: 100%;
     max-width: 400px; /* Max width for the login box */
     text-align: center;
+
+}
+
+
+.logout-container {
+    background-color: #ffffff;
+    padding:40px 30px;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    
+    max-width: 400px; /* Max width for the login box */
+    text-align: center;
+
 }
 
 /* Form Heading */
@@ -92,164 +107,10 @@ body {
     background-color: #1a5fcc; /* Darker shade on hover */
 }
 
-/* Options (Forgot Password / Sign Up) */
-.options {
-    margin-top: 15px;
-    text-align: right; /* Align forgot password link to the right */
-}
-
-.forgot-password {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 0.9em;
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-.signup-link {
-    margin-top: 20px;
-    font-size: 0.9em;
-    color: #555;
-}
-
 .signup-link a {
     color: #007bff;
     text-decoration: none;
     font-weight: bold;
 }
 
-.signup-link a:hover {
-    text-decoration: underline;
-}
 
-
-
-
-/* Here starts our Navbar */
-
-
-
-/* Navbar Styling */
-.navbar {
-    background-color: #333; /* Dark background color */
-    color: #fff;            /* White text color */
-    width: 100%;           /* Full width */
-    position: fixed;       /* Make it stick to the top */
-    top: 0;
-    left: 0;
-    z-index: 1000;         /* Ensure it's above other content */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-}
-
-.navbar-container {
-    max-width: 1100px;     /* Max width of the navbar content */
-    margin: 0 auto;        /* Center the container */
-    padding: 0 20px;       /* Padding on the sides */
-    display: flex;         /* Use flexbox for layout */
-    justify-content: space-between; /* Space between brand and nav links */
-    align-items: center;   /* Vertically center items */
-    height: 60px;          /* Navbar height */
-}
-
-/* Navbar Brand/Logo */
-.navbar-brand {
-    color: #fff;
-    text-decoration: none; /* Remove underline */
-    font-size: 1.8em;      /* Larger font size */
-    font-weight: bold;
-}
-
-/* Navigation Links List */
-.navbar-nav {
-    list-style: none;      /* Remove default bullet points */
-    display: flex;         /* Align items horizontally */
-}
-
-/* Individual Navigation Link Item */
-.nav-item {
-    margin-left: 20px;     /* Space between nav items */
-}
-
-/* Individual Navigation Link */
-.nav-link {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px 10px;     /* Add some padding for better clickability */
-    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effect */
-    border-radius: 4px;    /* Optional: Slightly rounded corners */
-}
-
-
-/* Optional: Style for an 'active' link if you add JavaScript later */
-.nav-link.active {
-    font-weight: bold;
-    border-bottom: 2px solid #fff; /* Example active style */
-}
-
-/* Logout Button Styling */
-.logout-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #dc0f0f; /* Button color */
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px; /* Space above the button */
-}
-
-
-/* log out CSS Page  */
-
-
-
-
-.logout-container {
-    background-color: #fff;
-    padding: 40px 50px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 90%; /* Responsive width */
-}
-h1 {
-    color: #333;
-    margin-bottom: 20px;
-}
-p {
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-.actions a {
-    display: inline-block;
-    text-decoration: none;
-    padding: 12px 25px;
-    margin: 10px 5px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-.actions .login-link {
-    background-color: #007bff; /* Primary action color */
-    color: white;
-    border: 1px solid #007bff;
-}
-.actions .login-link:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
-.actions .home-link {
-    background-color: #f8f9fa; /* Secondary action color */
-    color: #333;
-    border: 1px solid #ccc;
-}
- .actions .home-link:hover {
-    background-color: #e2e6ea;
-    border-color: #bbb;
-}

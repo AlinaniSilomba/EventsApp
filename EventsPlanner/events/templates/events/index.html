@@ -19,6 +19,9 @@
         </ul>
         <form class="d-flex" action= "{%url 'logout'%}" method="post">
             {% csrf_token %}
+            {% if user.is_authenticated %}
+          <p class="lead">Hello {{user.username}}<p/>
+            {% endif %}
             <button class="btn btn-outline-success" type="submit">Logout</button>
         </form>
       </div>
