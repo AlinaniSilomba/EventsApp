@@ -2,6 +2,9 @@
 {% block title %}Home{% endblock title %}
 {% load crispy_forms_tags %}
 {% block body %}
+
+<!--Start navbar-->
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="{%url 'index' %}">Event Planner</a>
@@ -22,22 +25,79 @@
           <!--TODO
           Fix the styling were the username appears too close to the log out button      
           -->
+          <div>
             {% csrf_token %} 
             {% if user.is_authenticated %}
-          <p class="lead">Hello {{user.username}}<p/>
+           <h4>Hello {{user.username}}</h4>
             {% endif %}
-            <button class="btn btn-outline-success" type="submit">Logout</button>
+          </div>
+          <div>
+            <button class="btn btn-outline-primary" type="submit">Logout</button> 
+          </div>
         </form>
       </div>
     </div>
   </nav>
-<!-- TODO
-Clean up styling by moving it to the dedicated CSS file as opposed to 
-having inline styling 
-Best standards
--->
-<div style="height: 1000px; padding: 20px; margin-top: 80px;">
-    <h1>Welcome you made it to third Heaven</h1>
-    <p>Content Coming Soon.</p>
-</div>
+
+  <!--End navbar-->
+
+<!--SECTION EVENT PLANNER -->
+<main class="event-planner-homepage">
+
+  <section class="hero-section">
+      <div class="container">
+          <h1>Plan Your Next Memorable Event</h1>
+          <p>Effortlessly organize, manage, and launch your events with our intuitive planner.</p>
+          <a href="#create-event-form" class="cta-button">Create New Event</a>
+      </div>
+  </section>
+
+  <section class="overview-section">
+      <div class="container">
+          <h2>Quick Overview</h2>
+          <div class="stats-grid">
+              <div class="stat-item">
+                  <h3>Upcoming Events</h3>
+                  <p class="stat-number">3</p> <a href="#upcoming-events" class="stat-link">View Details &rarr;</a>
+              </div>
+              <div class="stat-item">
+                  <h3>Draft Events</h3>
+                  <p class="stat-number">1</p> <a href="#draft-events" class="stat-link">Continue Editing &rarr;</a>
+              </div>
+              <div class="stat-item">
+                  <h3>Past Events</h3>
+                  <p class="stat-number">15</p> <a href="#past-events" class="stat-link">View Archive &rarr;</a>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="recent-activity-section">
+      <div class="container">
+          <h2>Recent Activity</h2>
+          <ul class="activity-list">
+              <li>You created "Summer Music Festival".</li>
+              <li>You updated details for "Annual Charity Gala".</li>
+              <li>Template "Corporate Conference" was used.</li>
+          </ul>
+           <a href="#all-activity" class="view-all-link">View All Activity</a>
+      </div>
+  </section>
+
+   <section id="create-event-form" class="create-event-placeholder">
+       <div class="container">
+           <h2>Create Your Event</h2>
+           <p>Click the "Create New Event" button above to start, or integrate your event creation form here.</p>
+           </div>
+   </section>
+
+</main>
+
+<footer>
+  <div class="container">
+      <p>&copy; 2025 Your Event Planner App. All rights reserved.</p>
+      </div>
+</footer>
+<!--End of EventPlanner SECTION-->
+
 {% endblock body %}
