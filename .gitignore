@@ -2,3 +2,4 @@ venv
 db.sqlite3
 __pycache__/
 *.pyc
+EventsPlanner/EventsPlanner/__pycache__/urls.cpython-313.pyc
