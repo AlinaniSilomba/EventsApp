@@ -4,20 +4,27 @@
 
 
 {% block body %}
-<div class="login-container">
-    <form id="login-form" action="{%url 'sign_up'%}" method='post'>
-        {% csrf_token %}
-        <div class="input-group">
-            {{form|crispy}}
+<div class="row py-5">
+  <div class="col-lg-4 mx-auto">
+    <div class="logout-container">
+      <h1>Sign Up</h1>
+      <p class="leading"> Sign up to continue</p>
+      <form id="login-form" action="{%url 'sign_up'%}" method='post'>
+          {% csrf_token %}
+          <div class=".form-control-sm">
+              {{form|crispy}}
+          </div>
+  
+        <div class="">
+          <p> have an account? Login <a href="{%url 'login'%}"> Here</a></p>
         </div>
-
-      <div class="signup-link">
-        <p> have an account? Login <a href="{%url 'login'%}"> Here</a></p>
-      </div>
-        
-        <div >
-            <button class="login-btn" type="submit">Register</button>
-        </div>
-    </form>
+          <div >
+              <button class="btn btn-primary" type="submit">Register</button>
+          </div>
+      </form>
+  </div>
 </div>
+</div>
+
+
 {% endblock body %}
