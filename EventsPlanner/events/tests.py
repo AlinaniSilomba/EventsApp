@@ -18,10 +18,12 @@ class EventViewsTest(TestCase):
         )
         
         # Define URLs
+        # Needed for redirect check
         self.index_url = reverse('index')
         self.signup_url = reverse('sign_up')
         self.logout_url = reverse('logout')
-        self.login_url = reverse('login') # Needed for redirect check
+        self.login_url = reverse('login')
+        self.contact_us_url = reverse('contact_us')
 
     # --- Tests for index view ---
 
@@ -120,6 +122,17 @@ class EventViewsTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'events/logout.html')
+        
+        
+    # --- Tests for contact_us view ---  
+        
+    def test_contact_us_view_renders_template(self):
+        ''' Test contact_us view renders the contact page'''
+        
+        response = self.client.get(self.contact_us_url)
+        
+        self.assertEqual(response.status_code,200)
+        self.assertTemplateUsed(response,'events/contact_us.html')
 
     # --- Suggestion for improved logout ---
     # If you intended the logout view to actually log the user out, 
