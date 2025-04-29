@@ -47,10 +47,6 @@ def sign_up(request) ->HttpResponseRedirect | HttpResponse :
         'form':form
     })
        
-'''
-
-
-'''
 def log_out(request)->HttpResponseRedirect | HttpResponse :
     '''
     A logout view that routes a user to the logout page
@@ -62,5 +58,27 @@ def log_out(request)->HttpResponseRedirect | HttpResponse :
     example would be index.html
     '''
     return render(request, 'events/logout.html')
+
+
+def contact_us(request):
+    ''' Write Documentation '''
+    return render(request, 'events/contact_us.html')
+
+
+
+def upcoming_events(request):
+    ''' Write Documentation '''
+    return render(request, 'events/upcoming_events.html')
+
+
+
+def past_events(request):
+    ''' Write Documentation '''
+    return render(request, 'events/past_events.html')
+    
+
+
+
+
     
 
