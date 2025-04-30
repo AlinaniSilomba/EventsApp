@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.urls import reverse
 from.forms import RegistrationForm
 from django.contrib.auth import login, logout, authenticate
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -62,7 +63,31 @@ def log_out(request)->HttpResponseRedirect | HttpResponse :
 
 def contact_us(request):
     ''' Write Documentation '''
-    return render(request, 'events/contact_us.html')
+    reciever_email = 'alinansilomba1@gmail.com'
+    if request.method == 'POST':
+        user_name = request.POST.get('name')
+        user_email = request.POST.get('email_address')
+        user_message = request.POST.get('email_message')
+        send_mail(
+    #Subject here
+    f'Message from:{user_name}',
+    # Here is the message
+    f'{user_message}',
+    #"from@example.com"
+    f'{user_email}',
+   # ["to@example.com"] 
+   # Todo
+   # security? YESSSS!! you dummy! 🤧 Maybe think about
+   # putting this in SECERETS as opposed to writing it here in plain text
+    [reciever_email],
+    fail_silently=False,) 
+    else:
+         return render(request, 'events/contact_us.html')
+    return render(request, 'events/contact_us.html',{
+        'message': user_name
+    })
+        
+   
 
 
 
@@ -75,6 +100,9 @@ def upcoming_events(request):
 def past_events(request):
     ''' Write Documentation '''
     return render(request, 'events/past_events.html')
+
+
+
     
 
 

@@ -38,11 +38,82 @@
         <button class="btn btn-outline-primary" type="submit">Logout</button> 
       </form>
        <!-- End Log out Button Form  -->
-
     </div>
   </div>
 </nav>
-
 <!--End navbar-->
 
+<!--Body Main -->
+<div class="hero-section">
+  <div class="hero-content">
+      <h2>Thank You for Reaching Out!</h2>
+      <p>We appreciate you wanting to get in touch. Please find our details below or use the form to send a message directly to us!
+         we aim to respond in the shortest time possible</p>
+  </div>
+</div>
+<!--Our contact Card -->
+
+ 
+    <div class="contact-card">
+      <h3>Our Contact Details</h3>
+      <table>
+          <tr>
+              <th>Method</th>
+              <th>Details</th>
+          </tr>
+          <tr>
+              <td>Phone</td>
+              <td><a href="tel:+260XXXXXXXXX">+260 XX XXX XXXX</a></td> </tr>
+          <tr>
+              <td>Email</td>
+              <td><a href="mailto:info@yourcompany.com">info@yourcompany.com</a></td> </tr>
+          <tr>
+              <td>Location</td>
+              <td>Kitwe, Copperbelt Province, Zambia</td>
+          </tr>
+      </table>
+    </div>
+  
+
+<!--End Our contact Card -->
+
+<!-- User Contact Form to company-->
+ 
+  <div class="contact-form-section">
+    <h3>Get In Touch</h3>
+    {% if message %}
+    <center>
+      <h2> Thanks {{user.username}}!</h2>
+      <p class="leading"> We received your message we will get back to you shortly</p>
+    </center>
+    {% endif %}
+    <form action="{% url 'contact_us'%}" method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your Name">
+      </div>
+
+      <div class="mb-3">
+        <label for="email_address" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      </div>
+
+  
+      <div class="mb-3">
+        <label for="email_message" class="form-label">Your Message</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+      <div class="signup-link a">
+        <div>
+            <button class="btn btn-primary" type="submit">Send Message</button>
+        </div>
+    </form>
+  </div>
+
+
+<!-- End  User Contact Form to company-->
+
+<!-- End Main Body -->
 {% endblock body %}

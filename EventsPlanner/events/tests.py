@@ -3,6 +3,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .forms import RegistrationForm 
+from django.core import mail
 
 class EventViewsTest(TestCase):
 
@@ -152,7 +153,29 @@ class EventViewsTest(TestCase):
         
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response,'events/upcoming_events.html')
+        
     
+class EmailTest(TestCase):
+    def test_send_email(self):
+            # Send message.
+        mail.send_mail(
+        "Subject here",
+        "Here is the message.",
+        "from@example.com",
+        ["to@example.com"],
+        fail_silently=False,
+        )
+        
+        # Test that one message has been sent.
+        self.assertEqual(len(mail.outbox), 1)
+
+        # Verify that the subject of the first message is correct.
+        self.assertEqual(mail.outbox[0].subject, "Subject here")
+            
+           
+       
+        
+      
    
     # --- Suggestion for improved logout ---
     # If you intended the logout view to actually log the user out, 

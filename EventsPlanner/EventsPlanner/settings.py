@@ -131,3 +131,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/events'
 LOGOUT_REDIRECT_URL = 'events/logout'
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
+#Email Settings to be used in Development 
+host = None
+port = None
+username: None 
+password: None 
+use_tls = None
+
+#Email Settings to be used in Production 
