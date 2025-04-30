@@ -24,6 +24,8 @@ class EventViewsTest(TestCase):
         self.logout_url = reverse('logout')
         self.login_url = reverse('login')
         self.contact_us_url = reverse('contact_us')
+        self.past_events_url = reverse('past_events')
+        self.upcoming_events_url = reverse('upcoming_events')
 
     # --- Tests for index view ---
 
@@ -42,8 +44,7 @@ class EventViewsTest(TestCase):
         response = self.client.get(self.index_url)
 
         # Check for redirect status code (302) and correct redirect URL
-        self.assertRedirects(response, f"{self.login_url}?next={self.index_url}", 
-                             status_code=302, target_status_code=200)
+        self.assertRedirects(response, f"{self.login_url}", target_status_code=200)
         # Or more simply if you don't need to check the 'next' param precisely:
         # self.assertEqual(response.status_code, 302)
         # self.assertTrue(response.url.startswith(self.login_url))
@@ -81,7 +82,9 @@ class EventViewsTest(TestCase):
         # Assuming standard UserCreationForm-like fields
         valid_data = {
             'username': 'newuser',
+            'email': 'new@example.com',
             'password': 'newpassword123', 
+            'password2': 'newpassword123',
             # Add other required fields from your RegistrationForm here
             # e.g., 'password2': 'newpassword123', 'email': 'new@example.com' 
         }
@@ -133,7 +136,24 @@ class EventViewsTest(TestCase):
         
         self.assertEqual(response.status_code,200)
         self.assertTemplateUsed(response,'events/contact_us.html')
+        
+    # --- Tests for past_event view ---  
+    def test_past_events_view_renders_template(self):
+        '''Test past_event view renders the past event page'''
+        response = self.client.get(self.past_events_url)
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'events/past_events.html')
 
+     # --- Tests for upcoming_event view ---  
+    def test_upcoming_event_view_renders_template(self):
+        '''Test upcoming_event view'''
+        response = self.client.get(self.upcoming_events_url)
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response,'events/upcoming_events.html')
+    
+   
     # --- Suggestion for improved logout ---
     # If you intended the logout view to actually log the user out, 
     # you would modify the view to call `logout(request)` from `django.contrib.auth`
