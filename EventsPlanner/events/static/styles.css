@@ -330,3 +330,135 @@ footer {
 
 
 
+/*---- Contact Form CSS */
+.hero-section {
+    width: 100%;
+    min-height: 300px;
+    background-color: #34568B;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.hero-content {
+    max-width: 800px;
+}
+.hero-content h2 {
+     margin-top: 0;
+     font-size: 2.5em;
+     margin-bottom: 15px;
+}
+ .hero-content p {
+     font-size: 1.1em;
+     opacity: 0.9;
+}
+
+
+/* Centering and Styling for Content Sections */
+.contact-card,
+.contact-form-section {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px; /* Increased padding */
+    border: 1px solid #e0e0e0; /* Lighter border */
+    border-radius: 10px; /* Slightly more rounded */
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Softer shadow */
+}
+ .contact-card {
+     margin-top: 50px;
+ }
+
+
+ .contact-card h3,
+ .contact-form-section h3 {
+     margin-top: 0;
+     text-align: center;
+     color: #333;
+      margin-bottom: 25px; /* More space below heading */
+      font-size: 1.6em; /* Larger heading */
+ }
+
+ /* Table Styling (Unchanged) */
+ table {
+     width: 100%;
+     margin-bottom: 10px;
+     border-collapse: collapse;
+ }
+ th, td {
+     border: 1px solid #ddd;
+     padding: 12px;
+     text-align: left;
+     vertical-align: middle;
+ }
+ th {
+     background-color: #f7f7f7;
+     width: 30%;
+     font-weight: bold;
+     color: #444;
+ }
+  td a {
+      color: #34568B;
+      text-decoration: none;
+  }
+   td a:hover {
+      text-decoration: underline;
+  }
+
+
+  
+        /* --- Form Styling with Pizazz --- */
+
+        /* Container for label + input */
+        form .form-group {
+            margin-bottom: 20px; /* Consistent spacing */
+       }
+
+       form label {
+           display: block;
+           margin-bottom: 8px; /* Slightly more space below label */
+           font-weight: bold;
+           color: #444;
+           font-size: 0.95em; /* Adjusted size */
+       }
+
+       form input[type="email"],
+       form input[type="tel"],
+       form textarea {
+           width: 100%;
+           padding: 15px; /* More padding inside fields */
+           border: 1px solid #ccc;
+           border-radius: 6px; /* Softer corners */
+           box-sizing: border-box;
+           font-size: 1em;
+           color: #333;
+           background-color: #fff; /* Ensure background is white */
+           /* --- Pizazz: Transition for focus effect --- */
+           transition: border-color 0.3s ease, box-shadow 0.3s ease;
+       }
+
+       /* --- Pizazz: Enhanced Focus State --- */
+       form input[type="email"]:focus,
+       form input[type="tel"]:focus,
+       form textarea:focus {
+           border-color: #34568B; /* Highlight color matching hero */
+           box-shadow: 0 0 0 3px rgba(52, 86, 139, 0.2); /* Subtle glow effect */
+           outline: none; /* Remove default browser outline */
+       }
+
+       form textarea {
+           height: 150px;
+           resize: vertical;
+       }
+
+
+       .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+        gap: 1.5rem;
+        text-align: center;
+    }
+

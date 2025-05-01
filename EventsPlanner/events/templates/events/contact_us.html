@@ -2,41 +2,118 @@
 {% block title %}Contact us - Thanks for contacting event planner{% endblock title %}
 {% block body %}
 <!--Start navbar-->
-
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{%url 'index' %}">Event Planner</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{%url 'index'%}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'contact_us'%}">Contact us</a>
-          </li>
-        </ul>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{%url 'index' %}">Event Planner</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <form class="d-flex" action= "{%url 'logout'%}" method="post">
-          <!--TODO
-          Fix the styling were the username appears too close to the log out button      
-          -->
-          <div>
-            {% csrf_token %} 
-            {% if user.is_authenticated %}
-           <span class="navbar-text">Hello {{user.username}}</span>
-            {% endif %}
-          </div>
-          <br/>
-          <div>
-            <button class="btn btn-outline-primary" type="submit">Logout</button> 
-          </div>
-        </form>
-      </div>
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{%url 'index'%}">Home</a>
+        </li>
+        <!-- End Home -->
+
+        <!-- Contact us  -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact_us'%}">Contact us</a>
+        </li>
+        <!-- End Contact us  -->
+     </ul>
+
+       <!-- Welcome Message -->
+     <li class="navbar-nav mb-4 mb-lg-0  ">
+      {% if user.is_authenticated %}
+     <a class = "nav-link">Hello, {{user.username}}</a>
+      {% endif %}
+    </li>
+      <!-- End Welcome Message  -->
+
+       <!-- Log out Button Form  -->
+      <form class="navbar-nav mb-1 mb-lg-0" action= "{%url 'logout'%}" method="post">
+        {% csrf_token %} 
+        <button class="btn btn-outline-primary" type="submit">Logout</button> 
+      </form>
+       <!-- End Log out Button Form  -->
     </div>
-  </nav>
-  <!--End navbar-->
+  </div>
+</nav>
+<!--End navbar-->
 
+<!--Body Main -->
+<div class="hero-section">
+  <div class="hero-content">
+      <h2>Thank You for Reaching Out!</h2>
+      <p>We appreciate you wanting to get in touch. Please find our details below or use the form to send a message directly to us!
+         we aim to respond in the shortest time possible</p>
+  </div>
+</div>
+<!--Our contact Card -->
+
+ 
+    <div class="contact-card">
+      <h3>Our Contact Details</h3>
+      <table>
+          <tr>
+              <th>Method</th>
+              <th>Details</th>
+          </tr>
+          <tr>
+              <td>Phone</td>
+              <td><a href="tel:+260XXXXXXXXX">+260 XX XXX XXXX</a></td> </tr>
+          <tr>
+              <td>Email</td>
+              <td><a href="mailto:info@yourcompany.com">info@yourcompany.com</a></td> </tr>
+          <tr>
+              <td>Location</td>
+              <td>Kitwe, Copperbelt Province, Zambia</td>
+          </tr>
+      </table>
+    </div>
+  
+
+<!--End Our contact Card -->
+
+<!-- User Contact Form to company-->
+ 
+  <div class="contact-form-section">
+    <h3>Get In Touch</h3>
+    {% if message %}
+    <center>
+      <h2> Thanks {{message}}!</h2>
+      <p class="leading"> We received your message we will get back to you shortly</p>
+    </center>
+    {% endif %}
+    <form action="{% url 'contact_us'%}" method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input name="nam" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your Name">
+      </div>
+
+      <div class="mb-3">
+        <label for="email_address" class="form-label">Email address</label>
+        <input name="email_address" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      </div>
+
+  
+      <div class="mb-3">
+        <label for="email_message" class="form-label">Your Message</label>
+        <textarea name="email_message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+      <div class="signup-link a">
+        <div>
+            <button class="btn btn-primary" type="submit">Send Message</button>
+        </div>
+    </form>
+  </div>
+
+
+<!-- End  User Contact Form to company-->
+
+<!-- End Main Body -->
 {% endblock body %}
