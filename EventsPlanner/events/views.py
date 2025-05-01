@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.urls import reverse
 from.forms import RegistrationForm
 from django.contrib.auth import login, logout, authenticate
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -59,22 +60,73 @@ def log_out(request)->HttpResponseRedirect | HttpResponse :
     '''
     return render(request, 'events/logout.html')
 
+  
+def contact_us(request)->HttpResponseRedirect | HttpResponse :
+    ''' A contact us view that routes the user to the contact us page
+    Where they can fill in a form to contact us.
+    The contact us method uses Django's mail library method sendmail() which takes in:
+    1. The Subject 2. the email message 3. the senders mail and 4. recepient mail. 
+    to enable email functionality.
+    
+    params: http request
+    
+    return : HttpResponseRedirect or HttpResponse to an  HTML template
+    
+    example would be index.html 
+    '''
+    reciever_email = 'alinanisilomba1@gmail.com'
+    if request.method == 'POST':
+        user_name = request.POST.get('name')
+        user_email = request.POST.get('email_address')
+        user_message = request.POST.get('email_message')
+        try:
+            send_mail(
+    #Subject here
+    f'Message from:{user_name}',
+    # Here is the message
+    f'{user_message}',
+    #"from@example.com"
+    f'{user_email}',
+   # ["to@example.com"] 
+   # Todo
+   # security? YESSSS!! you dummy! 🤧 Maybe think about
+   # putting this in SECERETS as opposed to writing it here in plain text
+    [reciever_email],
+    fail_silently=False,)     
+        except:
+            return HttpResponse('Failed to send email') 
+    else:
+         return render(request, 'events/contact_us.html')
+    return render(request, 'events/contact_us.html',{
+        'message': user_name
+    })
 
-def contact_us(request):
-    ''' Write Documentation '''
-    return render(request, 'events/contact_us.html')
-
-
-
-def upcoming_events(request):
-    ''' Write Documentation '''
+def upcoming_events(request)->HttpResponseRedirect | HttpResponse :
+    ''' 
+    An upcocming_events view that routes a user to the upcoming_events page
+    
+    params: http request
+    
+    returns:HttpResponseRedirect or HttpResponse to an  HTML template
+    
+    example would be index.html
+    '''
     return render(request, 'events/upcoming_events.html')
 
 
 
-def past_events(request):
-    ''' Write Documentation '''
+def past_events(request)->HttpResponseRedirect | HttpResponse :
+    ''' An past_events view that routes a user to the past_events page
+    
+    params: http request
+    
+    returns:HttpResponseRedirect or HttpResponse to an  HTML template
+    
+    example would be index.html '''
     return render(request, 'events/past_events.html')
+
+
+
     
 
 
