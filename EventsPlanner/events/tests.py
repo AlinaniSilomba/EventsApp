@@ -156,6 +156,8 @@ class EventViewsTest(TestCase):
         
     
 class EmailTest(TestCase):
+    
+       # --- Tests for sending email if the conditions where right ---  
     def test_send_email(self):
             # Send message.
         mail.send_mail(
