@@ -54,7 +54,7 @@
       <div class="container">
           <h1>Plan Your Next Memorable Event</h1>
           <p>Effortlessly organize, manage, and launch your events with our intuitive planner.</p>
-          <a href="#create-event-form" class="cta-button">Create New Event</a>
+          <a href="{% url "create_event" %}" class="cta-button">Create New Event</a>
       </div>
   </section>
 
@@ -64,7 +64,7 @@
           <div class="stats-grid">
               <div class="stat-item">
                   <h3>Upcoming Events</h3>
-                  <p class="stat-number">3</p> <a href="{% url 'upcoming_events' %}" class="stat-link">View Details &rarr;</a>
+                  <p class="stat-number">{{events_count}}</p> <a href="{% url 'upcoming_events' %}" class="stat-link">View Details &rarr;</a>
               </div>
               <!--   
               To be implemented later 
@@ -86,22 +86,22 @@
       <div class="container">
           <h2>Recent Activity</h2>
           <ul class="activity-list">
-              <li>You created "Summer Music Festival".</li>
-              <li>You updated details for "Annual Charity Gala".</li>
-              <li>Template "Corporate Conference" was used.</li>
+            {% for event in event_title %}
+            {% if events_count > 1 %}
+            <li>{{event.title}}</li>
+            {% else %} 
+            {% endif %}
+          
+           
+            {% endfor %}
           </ul>
            <a href="#all-activity" class="view-all-link">View All Activity</a>
       </div>
   </section>
 
-   <section id="create-event-form" class="create-event-placeholder">
-       <div class="container">
-           <h2>Create Your Event</h2>
-           <p>Click the "Create New Event" button above to start, or integrate your event creation form here.</p>
-           </div>
-   </section>
-
 </main>
+</div>
+
 
 <footer>
   <div class="container">
@@ -111,3 +111,4 @@
 <!--End of EventPlanner SECTION-->
 
 {% endblock body %}
+ 

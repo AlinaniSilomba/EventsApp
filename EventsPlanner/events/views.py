@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from django.urls import reverse
-from.forms import RegistrationForm
+from.forms import RegistrationForm,EventForm
 from django.contrib.auth import login, logout, authenticate
 from django.core.mail import send_mail
+from .models import EventModel
 
 
 # Create your views here.
@@ -21,7 +22,12 @@ def index(request) ->HttpResponseRedirect | HttpResponse :
     '''
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
-    return render(request, 'events/index.html')
+    events_count = EventModel.objects.count() # fetches the count of the events from the data base to be displayed
+    event_title = EventModel.objects.all() # Fetches all the events for title extraction on the frontend 
+    return render(request, 'events/index.html',{
+        'events_count':events_count, 
+        'event_title':event_title
+    })
 
 
 def sign_up(request) ->HttpResponseRedirect | HttpResponse :
@@ -74,10 +80,10 @@ def contact_us(request)->HttpResponseRedirect | HttpResponse :
     
     example would be index.html 
     '''
-    reciever_email = 'alinanisilomba1@gmail.com'
+    reciever_email:str = 'alinanisilomba1@gmail.com'
     if request.method == 'POST':
-        user_name = request.POST.get('name')
-        user_email = request.POST.get('email_address')
+        user_name:str = request.POST.get('name')
+        user_email:str = request.POST.get('email_address')
         user_message = request.POST.get('email_message')
         try:
             send_mail(
@@ -111,7 +117,10 @@ def upcoming_events(request)->HttpResponseRedirect | HttpResponse :
     
     example would be index.html
     '''
-    return render(request, 'events/upcoming_events.html')
+    events = EventModel.objects.all()
+    return render(request, 'events/upcoming_events.html',{
+        'events':events
+    })
 
 
 
@@ -127,6 +136,21 @@ def past_events(request)->HttpResponseRedirect | HttpResponse :
 
 
 
+def eventform(request)->HttpResponseRedirect | HttpResponse:
+     if request.method == 'POST':
+        form = EventForm(request.POST)
+        if form.is_valid():
+            user_event = form.save(commit=False)
+            user_event.author = request.user 
+            user_event.save()
+            return HttpResponseRedirect(reverse('upcoming_events'))
+        
+     else:
+        form = EventForm()
+        
+     return render (request, 'events/create_event.html',{
+         'form':form
+     })
     
 
 
